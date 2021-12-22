@@ -39,7 +39,7 @@ class StorageBuilder {
   /**
    * @type {number}
    */
-  _listingId;
+  _listId;
 
   /**
    * Storage url.
@@ -105,20 +105,20 @@ class StorageBuilder {
   }
 
   /**
-   * Get listing item.
+   * Find listing.
    *
    * @param {number} id
    *
    * @return {object}
    */
-  getListingItem(id) {
-    const listingId = this.getListing();
+  findListing(id) {
+    const listId = this.getList();
 
-    if (empty(listingId)) {
-      throw new Error('Please set listing id.');
+    if (empty(listId)) { 
+      throw new Error('Please set list id.');
     }
 
-    return this.endpoint('listings/'+listingId+'/items').find(id);
+    return this.endpoint('lists/'+listId+'/listings').find(id);
   }
 
   /**
@@ -129,35 +129,35 @@ class StorageBuilder {
    * @return {object}
    */
   getLocation(geocode) {
-    const listingId = this.getListing();
+    const listId = this.getList();
 
-    if (empty(listingId)) {
-      throw new Error('Please set listing id.');
+    if (empty(listId)) {
+      throw new Error('Please set list id.');
     }
 
-    return this.endpoint('listings/'+listingId+'/locations').find(geocode);
+    return this.endpoint('lists/'+listId+'/locations').find(geocode);
   }
 
   /**
-   * Set listing id.
+   * Set list id.
    *
-   * @param {number} listingId
+   * @param {number} listId
    *
    * @return {StorageBuilder}
    */
-  listing(listingId) {
-    this._listingId = listingId;
+  list(listId) {
+    this._listId = listId;
 
     return this;
   }
 
   /**
-   * Get current listing id.
+   * Get current list id.
    *
    * @return {number}
    */
-  getListing() {
-    return this._listingId;
+  getList() {
+    return this._listId;
   }
 
   /**
