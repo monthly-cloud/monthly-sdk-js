@@ -109,7 +109,7 @@ describe("Storage builder tests", () => {
     expect(result).toEqual('http://test');
  });
 
- test('Test if builder generates listing id and item id.', () => {
+ test('Test if builder generates list id and location id.', () => {
     expect.assertions(2);
     var data = { data: [] };
     fetch.mockResponseOnce(JSON.stringify(data));
@@ -117,31 +117,13 @@ describe("Storage builder tests", () => {
     var builder = sdk
       .storage('')
       .website(1)
-      .listing(2);
-
-    builder
-      .getListingItem(3)
-      .then(result => {
-        expect(result).toEqual(data);
-        expect(builder.buildUrl()).toEqual('/websites/1/listings/2/items/3.json');
-      });
- });
-
- test('Test if builder generates listing id and location id.', () => {
-    expect.assertions(2);
-    var data = { data: [] };
-    fetch.mockResponseOnce(JSON.stringify(data));
-
-    var builder = sdk
-      .storage('')
-      .website(1)
-      .listing(2);
+      .list(2);
 
     builder
       .getLocation(1307024979609764)
       .then(result => {
         expect(result).toEqual(data);
-        expect(builder.buildUrl()).toEqual('/websites/1/listings/2/locations/1307024979609764.json');
+        expect(builder.buildUrl()).toEqual('/websites/1/lists/2/locations/1307024979609764.json');
       });
  });
 
@@ -195,5 +177,25 @@ describe("Storage builder tests", () => {
         expect(builder.buildUrl()).toEqual('/marketplaces/1/profiles/2.json');
       });
  });
+
+ test('Test listing finder.', () => {
+    expect.assertions(2);
+    var data = { data: [] };
+    fetch.mockResponseOnce(JSON.stringify(data));
+
+    var builder = sdk
+      .storage('')
+      .website(1)
+      .list(2);
+
+    builder
+      .findListing(3)
+      .then(result => {
+        expect(result).toEqual(data);
+        expect(builder.buildUrl()).toEqual('/websites/1/lists/2/listings/3.json');
+      });
+ });
+
+
 
 });
