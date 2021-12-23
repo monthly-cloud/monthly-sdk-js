@@ -46,7 +46,7 @@ describe("Storage builder tests", () => {
 
  test('Test if builder generates website id.', () => {
     var result = sdk
-      .storage('')
+      .storage('/')
       .website(1)
       .endpoint('contents')
       .id(1)
@@ -58,7 +58,7 @@ describe("Storage builder tests", () => {
 
  test('Test if builder support root endpoints starting with /.', () => {
     var result = sdk
-      .storage('')
+      .storage('/')
       .website(1)
       .endpoint('/contents')
       .id(1)
@@ -69,7 +69,7 @@ describe("Storage builder tests", () => {
 
  test('Test if builder using locales correctly.', () => {
     var result = sdk
-      .storage('')
+      .storage('/')
       .website(1)
       .locale('en')
       .endpoint('routes')
@@ -84,7 +84,7 @@ describe("Storage builder tests", () => {
     fetch.mockResponseOnce(JSON.stringify(data));
 
     sdk
-      .storage('')
+      .storage('/')
       .endpoint('contents')
       .find(1)
       .then(result => expect(result).toEqual(data));
@@ -92,7 +92,7 @@ describe("Storage builder tests", () => {
 
  test('Test flushing. Builder should reset parameters on endpoint() call.', () => {
     var result = sdk
-      .storage('')
+      .storage('/')
       .endpoint('routes')
       .id(1)
       .endpoint('menus');
@@ -115,7 +115,7 @@ describe("Storage builder tests", () => {
     fetch.mockResponseOnce(JSON.stringify(data));
 
     var builder = sdk
-      .storage('')
+      .storage('/')
       .website(1)
       .list(2);
 
@@ -133,7 +133,7 @@ describe("Storage builder tests", () => {
     fetch.mockResponseOnce(JSON.stringify(data));
 
     var builder = sdk
-      .storage('')
+      .storage('/')
       .website(1);
 
     builder
@@ -167,7 +167,7 @@ describe("Storage builder tests", () => {
     fetch.mockResponseOnce(JSON.stringify(data));
 
     var builder = sdk
-      .storage('')
+      .storage('/')
       .website(1);
 
     builder
@@ -184,7 +184,7 @@ describe("Storage builder tests", () => {
     fetch.mockResponseOnce(JSON.stringify(data));
 
     var builder = sdk
-      .storage('')
+      .storage('/')
       .marketplace(1);
 
     builder
@@ -201,7 +201,7 @@ describe("Storage builder tests", () => {
     fetch.mockResponseOnce(JSON.stringify(data));
 
     var builder = sdk
-      .storage('')
+      .storage('/')
       .website(1)
       .list(2);
 
