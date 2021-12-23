@@ -150,7 +150,7 @@ describe("Storage builder tests", () => {
     fetch.mockResponseOnce(JSON.stringify(data));
 
     var builder = sdk
-      .storage('')
+      .storage('/')
       .website(1);
 
     builder
