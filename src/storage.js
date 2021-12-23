@@ -154,6 +154,17 @@ class StorageBuilder {
   }
 
   /**
+   * Find locale (dictionary).
+   *
+   * @param {string} locale
+   *
+   * @return {object}
+   */
+  findLocale(locale) {
+    return this.endpoint('locales').find(locale);
+  }
+
+  /**
    * Check if endpoint should access root path.
    *
    * @return {bool}
