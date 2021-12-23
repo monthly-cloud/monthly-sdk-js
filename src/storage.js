@@ -5,54 +5,12 @@ const {empty} = require('./helpers.js');
  */
 class StorageBuilder {
   /**
-   * Endpoint.
-   *
-   * @type {string}
-   */
-  _endpoint;
-
-  /**
-   * @type {string}
-   */
-  _extension = 'json';
-
-  /**
-   * @type {string}
-   */
-  _locale = 'en';
-
-  /**
-   * @type {number}
-   */
-  _id;
-
-  /**
-   * @type {number}
-   */
-  _websiteId;
-
-  /**
-   * @type {number}
-   */
-  _marketplaceId;
-
-  /**
-   * @type {number}
-   */
-  _listId;
-
-  /**
-   * Storage url.
-   *
-   * @type {string}
-   */
-  _storageUrl;
-
-  /**
    * Constructor.
    * @param  {string} storageUrl
    */
   constructor(storageUrl) {
+    this._extension = 'json';
+    this._locale = 'en';
     this._storageUrl = storageUrl || process.env.MONTHLY_CLOUD_STORAGE_URL;
   }
 
@@ -114,7 +72,7 @@ class StorageBuilder {
   findListing(id) {
     const listId = this.getList();
 
-    if (empty(listId)) { 
+    if (empty(listId)) {
       throw new Error('Please set list id.');
     }
 
