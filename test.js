@@ -144,6 +144,23 @@ describe("Storage builder tests", () => {
       });
  });
 
+ test('Test getMenus method.', () => {
+    expect.assertions(2);
+    var data = { data: [] };
+    fetch.mockResponseOnce(JSON.stringify(data));
+
+    var builder = sdk
+      .storage('')
+      .website(1);
+
+    builder
+      .getMenus('pt')
+      .then(result => {
+        expect(result).toEqual(data);
+        expect(builder.buildUrl()).toEqual('/websites/1/menus/pt.json');
+      });
+ });
+
  test('Test content finder.', () => {
     expect.assertions(2);
     var data = { data: [] };

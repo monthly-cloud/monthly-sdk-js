@@ -52,6 +52,23 @@ class StorageBuilder {
   }
 
   /**
+   * Get menus for locale.
+   *
+   * @param {string} locale
+   *
+   * @return {object}
+   */
+  getMenus(locale) {
+    this.endpoint('menus');
+
+    if (!empty(locale)) {
+      this.locale(locale);
+    }
+
+    return this.get();
+  }
+
+  /**
    * Find content by id.
    *
    * @param {int} contentId
