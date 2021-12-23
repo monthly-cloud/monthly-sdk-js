@@ -11,7 +11,7 @@ class StorageBuilder {
   constructor(storageUrl) {
     this._extension = 'json';
     this._locale = 'en';
-    this._storageUrl = storageUrl || process.env.MONTHLY_CLOUD_STORAGE_URL;
+    this._storageUrl = storageUrl || process.env.MONTHLY_CLOUD_STORAGE_URL || 'http://public-storage.monthly.cloud/';
   }
 
   /**
