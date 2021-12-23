@@ -78,6 +78,23 @@ describe("Storage builder tests", () => {
    expect(result).toBe('/websites/1/routes/en.json');
  });
 
+ test('Test locale finder.', () => {
+    expect.assertions(2);
+    var data = { data: [] };
+    fetch.mockResponseOnce(JSON.stringify(data));
+
+    var builder = sdk
+      .storage('/')
+      .website(1);
+
+    builder
+      .findLocale('en')
+      .then(result => {
+        expect(result).toEqual(data);
+        expect(builder.buildUrl()).toEqual('/websites/1/locales/en.json');
+      });
+ });
+
  test('Test $builder->find();.', () => {
     expect.assertions(1);
     var data = { data: [] };
